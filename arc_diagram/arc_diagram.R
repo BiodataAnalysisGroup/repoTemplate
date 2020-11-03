@@ -25,9 +25,9 @@ library(colorspace)
 # mis_graph = read.graph("lesmiserables.txt", format = "gml")
 clono = list()
 
-clono[["T14"]] = fread("arc_diagram/input/Clonotypes_T14.txt")
-clono[["T19"]] = fread("arc_diagram/input/Clonotypes_T19.txt")
-clono[["T20"]] = fread("arc_diagram/input/Clonotypes_T20.txt")
+clono[["T14"]] = fread("input/Clonotypes_T14.txt")
+clono[["T19"]] = fread("input/Clonotypes_T19.txt")
+clono[["T20"]] = fread("input/Clonotypes_T20.txt")
 
 for(i in names(clono)){
         
@@ -119,7 +119,7 @@ values = edgelist$weight # get.edge.attribute(mis_graph, "value")
 
 par(oma = c(0,0,0,0))
 
-png(file = 'arc_diagram/output/arcplot.png', width = 1000, height = 600)
+png(file = 'output/arcplot.png', width = 1000, height = 600)
 # plot arc diagram
 arcplot(as.matrix(edgelist[,1:2]), 
         # ordering = new_ord, 

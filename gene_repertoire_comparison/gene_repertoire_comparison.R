@@ -19,7 +19,7 @@ file_types <- c("EN", "T")
 corresponding_groups <- c("EM", "CIN")
 
 # Extracting codes and groups from files
-files_dir <- 'gene_repertoire_comparison/input'
+files_dir <- 'input'
 files <- list.files(files_dir)
 file_codes <- c()
 groups <-  c()
@@ -124,4 +124,4 @@ colnames(mydata) <- c("p-values","genes", "rank", "(i/m)Q (Q=0.1)", "BH correcti
                       "(i/m)Q (Q=0.05)", "BH correction (Q = 0.05)",
                       "Bonferroni threshold", "Bonferroni correction (a = 0.05)")
 rownames(mydata) <- sort_idices
-write.csv(mydata, 'gene_repertoire_comparison/output/analysis.csv')
+write.csv(mydata, 'output/analysis.csv')
