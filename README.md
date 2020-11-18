@@ -13,11 +13,12 @@ Brief description of the contents of each folder.
 ## input
 - This folder should contatin all the necessary inputs of your project.
 - **Your inputs should be placed inside the '/input/analysis' directory**.
-- Inside the '/input' directory, except from the '/analysis' folder, there are some extra folders that contain the inputs of the already implemented scripts. The names of these folders are the names of the corresponding scripts. For example, the '/arc_diagram' folder correspond to the arc_diagram.R script inside the scripts directory.
+- Inside the '/input' directory, except from the '/analysis' folder, there are some extra folders that contain the inputs of the already implemented scripts. The names of these folders are the names of the corresponding scripts. For example, the '/arc_diagram' folder correspond to the arc_diagram.R script inside the '/scripts' directory.
 
 ## output
-- **Short description**: Cloning comparison (?).
-- **Contents**: An /input and /output subfolder, a cloning_comparison.R script and a README.md file, including basic information on how to run the mini project.
+- In this folder should be placed all the outputs of your project.
+- **Your outputs should be placed inside the '/output/analysis' directory**.
+- Inside the '/output' directory, except from the '/analysis' folder, there are some extra folders that contain the outputs of the already implemented scripts. The names of these folders are the names of the corresponding scripts. For example, the '/arc_diagram' folder correspond to the arc_diagram.R script inside the '/scripts' directory.
 
 ## scripts
 This folder contains **already implemented scripts that perform specific jobs**, as descibed below. Inside the folder, there is a README.md file for more information. **If you don't need them, please skip this folder completely**.
