@@ -19,7 +19,7 @@ Brief description of the contents of each folder.
 - **Contents**: An /input and /output subfolder, a cloning_comparison.R script and a README.md file, including basic information on how to run the mini project.
 
 ## scripts
-This folder contains already implemented scripts that perform specific jobs, as descibed below. Inside the folder, there is a README.md file for more information. If you don't need them, please skip this folder completely.
+This folder contains **already implemented scripts that perform specific jobs**, as descibed below. Inside the folder, there is a README.md file for more information. **If you don't need them, please skip this folder completely**.
 - **arc_diagram.R**: creating arc diagrams (?).
 - **cloning_comparison.R**: Cloning comparison (?).
 - **gene_repertoire_comparison.R**: Gene repertoire comparison (?).
