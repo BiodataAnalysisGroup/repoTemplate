@@ -16,6 +16,8 @@ library(data.table)
 library(RColorBrewer)
 library(colorspace)
 
+inputfolder <- paste(dirname(getwd()), "/input/arc_diagram/", sep = '')
+outputfolder <- paste(dirname(getwd()), "/output/arc_diagram/", sep = '')
 
 # library(igraph)
 # library(reshape)
@@ -25,9 +27,9 @@ library(colorspace)
 # mis_graph = read.graph("lesmiserables.txt", format = "gml")
 clono = list()
 
-clono[["T14"]] = fread("input/Clonotypes_T14.txt")
-clono[["T19"]] = fread("input/Clonotypes_T19.txt")
-clono[["T20"]] = fread("input/Clonotypes_T20.txt")
+clono[["T14"]] = fread(paste(inputfolder,"Clonotypes_T14.txt", sep = ''))
+clono[["T19"]] = fread(paste(inputfolder,"Clonotypes_T19.txt", sep = ''))
+clono[["T20"]] = fread(paste(inputfolder,"Clonotypes_T20.txt", sep = ''))
 
 for(i in names(clono)){
         
@@ -119,7 +121,7 @@ values = edgelist$weight # get.edge.attribute(mis_graph, "value")
 
 par(oma = c(0,0,0,0))
 
-png(file = 'output/arcplot.png', width = 1000, height = 600)
+png(file = paste(outputfolder, 'arcplot.png', sep = ''), width = 1000, height = 600)
 # plot arc diagram
 arcplot(as.matrix(edgelist[,1:2]), 
         # ordering = new_ord, 

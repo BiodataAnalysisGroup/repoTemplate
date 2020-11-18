@@ -23,20 +23,24 @@ library(plotrix)
 library(DescTools)
 library(agricolae)
 
+inputfolder <- paste(dirname(getwd()), "/input/cloning_comparison/", sep = '')
+outputfolder <- paste(dirname(getwd()), "/output/cloning_comparison/", sep = '')
+
+
 # Deleting descriptives.csv
-fn <- "output/descriptives.csv"
+fn <- paste(outputfolder, "descriptives.csv", sep = '')
 #Check its existence
 if (file.exists(fn)) 
   #Delete file if it exists
   file.remove(fn)
 
 # filepath
-path <- "input/Statistics_New.xlsx"
+path <- paste(inputfolder ,"Statistics_New.xlsx", sep = '')
 mydata <- read_excel(path)
 column_names <- colnames(mydata)
 
 df <- data.frame()
-descriptives_path <- 'output/descriptives.csv'
+descriptives_path <- fn
 
 groups <- c()
 vals <- c()
@@ -113,16 +117,16 @@ for (i in 1:ncol(mydata)){
 
 row.names(df) <- colnames(mydata)
 data <- as.data.frame(df, row.names = colnames(mydata))
-write.csv(data, file = 'output/Valid_missing_frames.csv')
+write.csv(data, file = paste(outputfolder, 'Valid_missing_frames.csv',sep = ''))
 
-png(filename = 'output/boxplots.png', height = 600, width = 1000)
+png(filename = paste(outputfolder, 'boxplots.png', sep = ''), height = 600, width = 1000)
 boxplot(as.matrix(mydata), xlab = "Categories_new", ylab = "Measure", main = "Box Plots")
 dev.off()
 
 levTest <- leveneTest(vals, groups, center = "mean")
 df <- data.frame(levTest$`F value`[1], levTest$Df[1], levTest$Df[2], levTest$`Pr(>F)`[1])
 names(df) <- c("Levene Statistic", "df1", "df2", "Sig.")
-write.csv(df, file = 'output/leveneTest.csv')
+write.csv(df, file = paste(outputfolder, 'leveneTest.csv', sep = ''))
 
 cur_data <- data.frame(vals, groups)
 names(cur_data) <- c("values", "groups")
@@ -134,7 +138,7 @@ df <- data.frame(c(anovaTest$`Sum Sq`[1], anovaTest$`Sum Sq`[2], anovaTest$`Sum 
                  c(anovaTest$`F value`[1],"" ,""), c(anovaTest$`Pr(>F)`[1],"",""))
 names(df) <- c("Sum of Squares", "df", "Mean Square", "F", "Sig.")
 row.names(df) <- c("Between Groups", "Within Groups", "Total")
-write.csv(df, file = 'output/anovaTest.csv')
+write.csv(df, file = paste(outputfolder, 'anovaTest.csv', sep = ''))
 
 welchtest <- welch.test(values~groups, cur_data)
 row1 <- c(welchtest$statistic, welchtest$parameter[1], welchtest$parameter[2], welchtest$p.value)
@@ -146,7 +150,7 @@ row2 <- c(bftest$statistic, bftest$parameter[1], bftest$parameter[2], bftest$p.v
 robust_matrix <- data.frame(rbind(row1,row2))
 names(robust_matrix) <- c("Statistc", "df1", "df2", "Sig.")
 row.names(robust_matrix) <- c("Welch", "Brown-Forsythe")
-write.csv(robust_matrix, 'output/robust_tests.csv')
+write.csv(robust_matrix, paste(outputfolder,'robust_tests.csv', sep = ''))
 
 
 # Post Hoc Analysis:
@@ -202,24 +206,24 @@ for (i in 1:ncol(mydata)){
 post_hoc_table = data.frame(mean_ij, std_error_vector, sig, left_int, right_int)
 names(post_hoc_table) <- c("Mean Difference", "Std.Error","Sig", "95% conf.int lower Bound", "95% conf.int Upper Bound")
 row.names(post_hoc_table) <- myrownames
-write.csv(post_hoc_table, 'output/Bonferroni_post_hoc_tests.csv')
+write.csv(post_hoc_table, paste(outputfolder, 'Bonferroni_post_hoc_tests.csv', sep = ''))
 
 
 duncan_test <- duncan.test(a1, 'groups',MSerror = mswithin, alpha = 0.05, console = TRUE, group = FALSE)
 df <- data.frame(duncan_test$means$r, duncan_test$means$vals)
 names(df) <- c("N",  "vals")
 row.names(df) <- c(rownames(duncan_test$means))
-write.csv(df, 'output/duncan_test.csv')
-write.csv(duncan_test$comparison, 'output/duncan_test_sig.csv')
+write.csv(df, paste(outputfolder, 'duncan_test.csv', sep = ''))
+write.csv(duncan_test$comparison, paste(outputfolder, 'duncan_test_sig.csv', sep = ''))
 
 kruskal_test <- kruskal.test(values~groups, data = cur_data)
 kt2 <- kruskal(vals, groups, alpha = 0.05, p.adj = "bonferroni", group = TRUE)
 df <- data.frame(c(kruskal_test$statistic, kruskal_test$parameter, kruskal_test$p.value))
 row.names(df)[3] <- "Asymp. Sig"
 names(df) <- c("Measure")
-write.csv(df, 'output/Kruskal_Wallis_Test_Statistics.csv')
+write.csv(df, paste(outputfolder,'Kruskal_Wallis_Test_Statistics.csv', sep = ''))
 
 ranks_table <- data.frame(kt2$means$r, kt2$means$rank)
 row.names(ranks_table) <- rownames(kt2$means)
 names(ranks_table) <- c("N", "Mean Rank")
-write.csv(ranks_table, 'output/Kruskal_Wallis_Test_Mean_Ranks.csv')
+write.csv(ranks_table, paste(outputfolder, 'Kruskal_Wallis_Test_Mean_Ranks.csv', sep = ''))

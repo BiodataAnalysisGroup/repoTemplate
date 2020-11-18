@@ -14,12 +14,16 @@ library(data.table)
 library(gtools)
 library(mutoss)
 
+# input and output folder
+inputfolder <- paste(dirname(getwd()), "/input/gene_repertoire_comparison/", sep = '')
+outputfolder <- paste(dirname(getwd()), "/output/gene_repertoire_comparison/", sep = '')
+
 # Table of files and groups
 file_types <- c("EN", "T")
 corresponding_groups <- c("EM", "CIN")
 
 # Extracting codes and groups from files
-files_dir <- 'input'
+files_dir <- inputfolder
 files <- list.files(files_dir)
 file_codes <- c()
 groups <-  c()
@@ -124,4 +128,4 @@ colnames(mydata) <- c("p-values","genes", "rank", "(i/m)Q (Q=0.1)", "BH correcti
                       "(i/m)Q (Q=0.05)", "BH correction (Q = 0.05)",
                       "Bonferroni threshold", "Bonferroni correction (a = 0.05)")
 rownames(mydata) <- sort_idices
-write.csv(mydata, 'output/analysis.csv')
+write.csv(mydata, paste(outputfolder, 'analysis.csv', sep = ''))
