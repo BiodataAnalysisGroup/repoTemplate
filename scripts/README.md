@@ -22,4 +22,4 @@ In this folder are placed already implemented scripts that perfrom specific jobs
 
 
 ## Important note
-** If you add any script in this folder, please don't skip to add details in this README file**
+**If you add any script in this folder, please don't skip to add details in this README file**
