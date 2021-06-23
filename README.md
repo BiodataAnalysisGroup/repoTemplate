@@ -22,9 +22,9 @@ Brief description of the contents of each folder.
 
 -`scripts/`
   - This folder contains **already implemented scripts that perform specific jobs**, as descibed below. Inside the folder, there is a [README file](https://github.com/BiodataAnalysisGroup/bioanalytics/blob/main/scripts/README.md) for more information. **If you don't need to use them, please totally ignore this folder**.
-  1. `arc_diagram.R`: creating arc diagrams (?).
-  2. `cloning_comparison.R`: Cloning comparison (?).
-  3. `gene_repertoire_comparison.R`: Gene repertoire comparison (?).
+    1. `arc_diagram.R`: creating arc diagrams (?).
+    2. `cloning_comparison.R`: Cloning comparison (?).
+    3. `gene_repertoire_comparison.R`: Gene repertoire comparison (?).
 
 
 **If you wish to add extra implemented scripts in this Research project, please mind to keep the recommended structure. This means that you should add script inside the `scripts/` directory and the inputs-outputs should be placed to the corresponding folders. Moreover, please remember to add instructions in the corresponding README files**
