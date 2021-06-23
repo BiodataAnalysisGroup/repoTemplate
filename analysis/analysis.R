@@ -7,6 +7,10 @@ cat("\014")
 rm(list = ls())
 dev.off(dev.list()["RStudioGD"])
 
+# In order to install readxl library example libraries, please
+# uncomment the following line
+# install.packages("readxl")
+
 # Libraries - Here you should add your own libraries
 # Warning: The following libraries are not used at all, they are just examples
 library(stats)
@@ -24,7 +28,7 @@ dir.create(outputfolder)
 # This is the analysis part
 # Feel free to write your own code here
 
-# EXAMPLE - Please read it and then remove the lines 27-42,
+# EXAMPLE - Please read it and then remove the lines 31-45,
 # in order fill your own code
 
 # Loading file
