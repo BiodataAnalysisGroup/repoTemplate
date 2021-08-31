@@ -1,4 +1,4 @@
-# Bioanalytics - Repository Template
+# repoTemplate - Bioanalytics Repository Template
 This repository contains a template for a reproducible research project. The idea of reproducible research is that all the components of your work, such as the directory of input and output files, and evidently the structure of the analysis scripts, are prespecified. In this way, your work can be easily checked by adviser, mentors, collaborators, others working in your area, and the results can be easily regenerated.
 
 
